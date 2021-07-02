@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Bank (
 
-        @JsonProperty("title")
+        @JsonProperty("node_idaa")
         val accountCode:String,
 
-        @JsonProperty("userId")
+        @JsonProperty("id")
         val trust :Double,
 
-        @JsonProperty("id")
+        @JsonProperty("watchers")
         val transactionFee : Int
 )

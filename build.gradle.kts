@@ -25,6 +25,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.mockk:mockk:1.10.4")
 	implementation ("com.fasterxml.jackson.core:jackson-databind:2.12.3")
+	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:2.5.2")
 
 }
 

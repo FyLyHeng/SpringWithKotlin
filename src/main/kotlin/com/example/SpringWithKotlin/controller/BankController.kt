@@ -5,6 +5,7 @@ import com.example.SpringWithKotlin.service.BankService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.io.IOException
 
 
 @RestController
@@ -19,6 +20,11 @@ class BankController(private val bankService: BankService) {
     @ExceptionHandler(IllegalArgumentException::class)
     fun handleBedRequest(e:IllegalArgumentException):ResponseEntity<String>{
         return ResponseEntity(e.message,HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(IOException::class)
+    fun handleIO(e:IOException):ResponseEntity<String>{
+        return ResponseEntity(e.message,HttpStatus.BAD_GATEWAY)
     }
 
     @GetMapping

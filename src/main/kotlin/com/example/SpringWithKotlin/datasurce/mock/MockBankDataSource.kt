@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class MockBankDataSource : BankDataSource {
 
-    val banks = mutableListOf<Bank>(
+    val banks = mutableListOf (
             Bank("1234",1.5,10),
             Bank("0001",1.0,0),
             Bank("0002",1.7,17),
