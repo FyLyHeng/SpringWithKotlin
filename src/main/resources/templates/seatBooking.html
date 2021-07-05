@@ -6,17 +6,15 @@
 </head>
 <body>
 <h1>Hello kotlin</h1>
-<form action="/theater" th:object="${bean}" method="post">
-
+<form action="/addBooking" th:object="${bean}" method="POST">
     <p>
         Check i can use val from controller
         <select th:field="*{selectedSeatNum}">
             <option th:each="n : ${bean.seatNums}" th:value="${n}" th:text="${n}"></option>
         </select>
-        is avaiable <input type="submit">
+        <input type="submit"/>
     </p>
 </form>
-<p th:object="${bean.result}"></p>
 
 </body>
 </html>

@@ -1,7 +1,9 @@
 package com.example.SpringWithKotlin.datasurce.mock.DTO
 
 class CheckSeatDTO() {
-    val seatNums = 1..10
-    val selectedSeatNum = 1
-    val result = ""
+    val seatRows = "A".."F"
+    var selectedSeatRow = "A"
+    var seatNums = 1..10
+    var selectedSeatNum = 1
+    var result = ""
 }

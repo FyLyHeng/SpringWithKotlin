@@ -2,10 +2,12 @@ package com.example.SpringWithKotlin.datasurce.mock
 
 import com.example.SpringWithKotlin.datasurce.SeatDataSource
 import com.example.SpringWithKotlin.model.Seat
+import org.springframework.stereotype.Repository
 
+@Repository("mock")
 class MockSeatDataSource : SeatDataSource {
 
-    val seats = listOf(
+    private val seats = listOf(
             Seat("A", 1, 3.2, "Good A view"),
             Seat("B", 1, 3.2, "Good B view")
     )
