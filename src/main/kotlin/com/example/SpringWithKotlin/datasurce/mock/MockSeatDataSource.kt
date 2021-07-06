@@ -4,12 +4,12 @@ import com.example.SpringWithKotlin.datasurce.SeatDataSource
 import com.example.SpringWithKotlin.model.Seat
 import org.springframework.stereotype.Repository
 
-@Repository("mock")
-class MockSeatDataSource : SeatDataSource {
-
+@Repository
+class MockSeatDataSource  {
+/*
     private val seats = listOf(
-            Seat("A", 1, 3.2, "Good A view"),
-            Seat("B", 1, 3.2, "Good B view")
+            Seat(0,"A", 1, 3.2, "Good A view"),
+            Seat(1,"B", 1, 3.2, "Good B view")
     )
 
 
@@ -30,5 +30,5 @@ class MockSeatDataSource : SeatDataSource {
         return seats.firstOrNull() {it.row == row && it.num == num}?:throw NoSuchElementException("Account number not found ")
     }
 
-    override fun retriveSeat(): Collection<Seat> = seats
+    override fun retriveSeat(): Collection<Seat> = seats*/
 }

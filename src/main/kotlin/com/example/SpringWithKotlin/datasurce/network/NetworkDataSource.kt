@@ -5,18 +5,16 @@ import com.example.SpringWithKotlin.datasurce.network.DTO.BankList
 import com.example.SpringWithKotlin.model.Bank
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Repository
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForEntity
-import org.springframework.web.client.getForObject
-import java.io.IOException
 
 
-@Repository("network")
-class NetworkDataSource( @Autowired private val restTemplate: RestTemplate) : BankDataSource {
-
-
+@Repository
+class NetworkDataSource(@Autowired private val restTemplate: RestTemplate)  {
+/*
     override fun retrieveBanks(): Collection<Bank> {
         val response: ResponseEntity<Any> = restTemplate.getForEntity("https://api.github.com/users/hadley/repos", BankList::class)
 
@@ -25,12 +23,9 @@ class NetworkDataSource( @Autowired private val restTemplate: RestTemplate) : Ba
         println("Why many @@@")
 
 
-        return listOf(Bank("2@",1.2,4))
+        return listOf(Bank(1,"1.5",10.8,1),)
        // return response.body?.resultList?:throw IOException("Could Not fetch banks from the Network")
     }
-
-
-
 
     override fun retrieveBank(accountCode: String): Bank {
         TODO("Not yet implemented")
@@ -46,5 +41,5 @@ class NetworkDataSource( @Autowired private val restTemplate: RestTemplate) : Ba
 
     override fun deleteBank(accountCode: String) {
         TODO("Not yet implemented")
-    }
+    }*/
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.assertThrows as assertThrows1
 
 internal class MockSeatDataSourceTest{
 
-
+/*
     val mockSeatDataSource = MockSeatDataSource()
 
     @Test
@@ -32,5 +32,5 @@ internal class MockSeatDataSourceTest{
         assertThrows(NoSuchElementException::class.java){
             mockSeatDataSource.retriveSeat(row,seatNum)
         }
-    }
+    }*/
 }

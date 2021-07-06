@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 
 internal class MockBankDataSourceTest{
-    private val mockDataSource = MockBankDataSource()
+/*    private val mockDataSource = MockBankDataSource()
 
     @Test
     fun `should provide a list of bank`(){
@@ -28,7 +28,7 @@ internal class MockBankDataSourceTest{
         assertThat(banks).allMatch { it.accountCode.isNotBlank() }
         assertThat(banks).anyMatch { it.trust != 0.0 }
         assertThat(banks).anyMatch { it.transactionFee != 0 }
-    }
+    }*/
 
 
 

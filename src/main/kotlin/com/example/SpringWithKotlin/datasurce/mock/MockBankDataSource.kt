@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository
 
 
 @Repository
-class MockBankDataSource : BankDataSource {
+class MockBankDataSource  {
 
-    val banks = mutableListOf (
-            Bank("1234",1.5,10),
-            Bank("0001",1.0,0),
-            Bank("0002",1.7,17),
+/*    val banks = mutableListOf (
+            Bank(1,"1.5",10.8,1),
+            Bank(2,"1.5",10.8,1),
+            Bank(3,"1.5",10.8,1),
     )
 
     override fun retrieveBanks(): Collection<Bank> = banks
@@ -45,5 +45,5 @@ class MockBankDataSource : BankDataSource {
     // ========= sub service =============
     private fun getExistBank(accountCode: String):Bank {
         return banks.firstOrNull(){it.accountCode == accountCode}?:throw IllegalArgumentException("cant not update Bank with not exist account Code $accountCode")
-    }
+    }*/
 }

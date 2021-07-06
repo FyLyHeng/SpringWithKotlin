@@ -1,15 +1,20 @@
 package com.example.SpringWithKotlin.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import javax.persistence.*
 
+@Entity
 data class Bank (
+        @Id @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(updatable = false)
+        val id: Long,
+//        @JsonProperty("node_idaa")
 
-        @JsonProperty("node_idaa")
+        @Column(unique = true,nullable = true)
         val accountCode:String,
 
-        @JsonProperty("id")
+//        @JsonProperty("id")
         val trust :Double,
 
-        @JsonProperty("watchers")
+//        @JsonProperty("watchers")
         val transactionFee : Int
 )

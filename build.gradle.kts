@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.5.20"
 	kotlin("plugin.spring") version "1.5.20"
+	id ("org.jetbrains.kotlin.plugin.jpa") version "1.5.20"
 }
 
 group = "com.example"
@@ -26,7 +27,12 @@ dependencies {
 	testImplementation("io.mockk:mockk:1.10.4")
 	implementation ("com.fasterxml.jackson.core:jackson-databind:2.12.3")
 	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:2.5.2")
+	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+//	runtimeOnly ("com.h2database:h2")
 
+//	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+//	implementation ("org.springframework.boot:spring-boot-starter-web")
+	runtimeOnly ("mysql:mysql-connector-java")
 }
 
 tasks.withType<KotlinCompile> {
