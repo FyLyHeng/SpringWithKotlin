@@ -12,5 +12,7 @@ interface BankRepository: JpaRepository<Bank,Long> {
 
     fun findAllByAccountCode (accountCode: String): Optional<Bank>
 
-    fun findAllByTrust(trust:Double):Optional<Bank>
+    fun findAllByTransactionFee(transactionFee:Int):Optional<Bank>
+
+    fun findAllByTransactionFeeOrAccountCode(transactionFee: Int,accountCode: String):Optional<Bank>
 }

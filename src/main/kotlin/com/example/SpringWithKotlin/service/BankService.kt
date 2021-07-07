@@ -1,12 +1,11 @@
 package com.example.SpringWithKotlin.service
 
-import com.example.SpringWithKotlin.datasurce.BankDataSource
 import com.example.SpringWithKotlin.model.Bank
 import com.example.SpringWithKotlin.model.Seat
 import com.example.SpringWithKotlin.model.repository.BankRepository
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 import java.util.*
+import javax.transaction.Transactional
 
 @Service
 class BankService( private val dataSource: BankRepository,private val seatService: SeatService) {
@@ -23,16 +22,18 @@ class BankService( private val dataSource: BankRepository,private val seatServic
         return dataSource.findAllByAccountCode(accountCode)
     }
 
-    fun getAllBank(trust:Double):Optional<Bank>{
-        return dataSource.findAllByTrust(trust)
+    fun filterBeak(transactionFee:Int,accountCode: String):Optional<Bank>{
+        return dataSource.findAllByTransactionFeeOrAccountCode(transactionFee,accountCode)
     }
 
+    @Transactional
     fun addBank(bank: Bank):Bank{
-        dataSource.saveAndFlush(bank)
+        dataSource.save(bank)
 
         return dataSource.getById(bank.id)
     }
 
+    @Transactional
     fun updateBank(bank: Bank): Bank {
         return dataSource.save(bank)
     }

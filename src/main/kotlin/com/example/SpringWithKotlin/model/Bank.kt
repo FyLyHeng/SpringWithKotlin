@@ -1,20 +1,31 @@
 package com.example.SpringWithKotlin.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
-data class Bank (
-        @Id @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(updatable = false)
+data class Bank(
+        @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(updatable = false)
         val id: Long,
-//        @JsonProperty("node_idaa")
 
-        @Column(unique = true,nullable = true)
-        val accountCode:String,
+        @Column(unique = true, nullable = true)
+        var accountCode: String,
 
-//        @JsonProperty("id")
-        val trust :Double,
+        @Transient //not store this field in DB
+        var trust: Double = 0.0,
 
-//        @JsonProperty("watchers")
-        val transactionFee : Int
-)
+        var transactionFee: Int,
+
+        @Column(columnDefinition = "TEXT")
+        @JsonIgnore // not show this field in render
+        var description:String? = null
+) {
+
+    init {
+        trust = when {
+            accountCode.length > 5 -> 10.0
+            accountCode.length > 5 && transactionFee > 10 -> 20.0
+            else -> 0.0
+        }
+    }
+}

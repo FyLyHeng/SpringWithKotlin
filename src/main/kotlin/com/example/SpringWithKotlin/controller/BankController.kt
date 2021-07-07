@@ -5,6 +5,7 @@ import ControllerExceptionHandler.RespondDTO
 import com.example.SpringWithKotlin.model.Bank
 import com.example.SpringWithKotlin.model.Seat
 import com.example.SpringWithKotlin.service.BankService
+import org.apache.catalina.filters.RequestFilter
 import org.springframework.data.repository.query.Param
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -34,19 +35,17 @@ class BankController constructor (private val bankService: BankService) : BaseCl
         }
     }
 
+    //TODO allow filter by params multi opsiontol
     @GetMapping
-    fun getBankByFilter(@RequestParam filters: HashMap<String, Any>): Any {
+    fun getBankByFilter(@RequestParam(required = false) accountCode: String, @RequestParam(required = false) transactionFee:Int): Any {
 
-        println("api filter by params $filters")
-        println("api filter by params ${filters["trust"] as Double}")
+        println("api filter by params ${RequestFilter::class.typeParameters}")
 
-        val result = bankService.getAllBank(filters["trust"] as Double)
+        val result = bankService.filterBeak(transactionFee,accountCode)
 
         return if (result.isPresent) {
             renderJSONFormat(result)
-        }else{
-            renderJSONFormat(data = result, statusCode = HttpStatus.NOT_FOUND.value(), message = "Account not exist with given accountCode ${filters["trust"] as Double}")
-        }
+        }else renderJSONFormat(data = result, statusCode = HttpStatus.NOT_FOUND.value(), message = "Account not exist with given accountCode")
     }
 
 
@@ -55,7 +54,7 @@ class BankController constructor (private val bankService: BankService) : BaseCl
     fun addBank(@RequestBody bank: Bank) : Bank{
 
         println(bank.toString())
-
+        bank.transactionFee = 100
         return bankService.addBank(bank)
     }
 
