@@ -29,10 +29,9 @@ dependencies {
 	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf:2.5.2")
 	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
 //	runtimeOnly ("com.h2database:h2")
-
-//	implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
-//	implementation ("org.springframework.boot:spring-boot-starter-web")
 	runtimeOnly ("mysql:mysql-connector-java")
+	implementation ("org.springframework.boot:spring-boot-starter-actuator")
+
 }
 
 tasks.withType<KotlinCompile> {
