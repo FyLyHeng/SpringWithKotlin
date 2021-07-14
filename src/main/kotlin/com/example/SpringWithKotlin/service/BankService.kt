@@ -6,6 +6,7 @@ import com.example.SpringWithKotlin.model.repository.BankRepository
 import org.springframework.stereotype.Service
 import java.util.*
 import javax.transaction.Transactional
+import kotlin.NoSuchElementException
 
 @Service
 class BankService( private val dataSource: BankRepository,private val seatService: SeatService) {
@@ -29,12 +30,14 @@ class BankService( private val dataSource: BankRepository,private val seatServic
     @Transactional
     fun addBank(bank: Bank):Bank{
         dataSource.save(bank)
-
-        return dataSource.getById(bank.id)
+        return bank
     }
 
     @Transactional
-    fun updateBank(bank: Bank): Bank {
+    fun updateBank(id:Long,bank: Bank): Bank {
+        if (!dataSource.existsById(id)){
+            throw NoSuchElementException("Bank Id Given Not found!")
+        }
         return dataSource.save(bank)
     }
 

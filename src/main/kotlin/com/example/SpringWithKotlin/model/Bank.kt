@@ -18,7 +18,10 @@ data class Bank(
 
         @Column(columnDefinition = "TEXT")
         @JsonIgnore // not show this field in render
-        var description:String? = null
+        var description: String? = null,
+
+        @Version
+        var version: Int? = 0
 ) {
 
     init {

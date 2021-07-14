@@ -60,15 +60,15 @@ Events</a></li>
                 </div>
                 <div class="half">
                     <ul>
-                        <li th:each="burger : ${burgers}" th:if="${burger.id%2==0}">
-                            <span th:text="${burger.name}"></span>
-                            <span class="price" th:text="${burger.price}"></span>
+                        <li th:each="burger : ${data.burgers}" th:if="${burger.get('id')%2==0}">
+                            <span th:text="${burger.get('name')}"></span>
+                            <span class="price" th:text="${burger.get('price')}"></span>
                         </li>
                     </ul>
                 </div>
                 <div class="half">
                     <ul>
-                        <li th:each="burger : ${burgers}" th:if="${burger.id%2!=0}">
+                        <li th:each="burger : ${data.bur}" th:if="${burger.id%2!=0}">
                             <span th:text="${burger.name}"></span>
                             <span class="price" th:text="${burger.price}"></span>
                         </li>
