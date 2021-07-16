@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import java.sql.SQLIntegrityConstraintViolationException
 import java.sql.SQLSyntaxErrorException
 
-open class SQLExceptionExceptionHandler {
+abstract class SQLExceptionExceptionHandler {
 
     /**
      * Empty exception

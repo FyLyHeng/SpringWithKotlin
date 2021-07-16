@@ -1,13 +1,26 @@
 package ControllerExceptionHandler
 
 import ControllerExceptionHandler.RespondDTO.RespondDTO
-import ControllerExceptionHandler.exceptionHandler.BaseClassExceptionHandler
+import ControllerExceptionHandler.RespondDTO.renderJSONFormat
+import ControllerExceptionHandler.exceptionHandler.BaseClassExceptionImp
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.RestController
 
-open class SimpleGenericRestfulController :RestfulControllerImp, BaseClassExceptionHandler() {
+abstract class SimpleGenericRestfulController<T> : RestfulControllerImp<T>, BaseClassExceptionImp() {
 
+    override fun save(resource: T): ResponseEntity<RespondDTO> {
+        TODO("Not yet implemented")
+    }
 
-    override fun save(): ResponseEntity<RespondDTO> {
+    override fun saved(resource:T): ResponseEntity<RespondDTO>{
+        return renderJSONFormat(resource)
+    }
+
+    override fun beforeSave(t: T): ResponseEntity<RespondDTO> {
+        TODO("Not yet implemented")
+    }
+
+    override fun afterSaved(t: T): ResponseEntity<RespondDTO> {
         TODO("Not yet implemented")
     }
 
@@ -15,19 +28,11 @@ open class SimpleGenericRestfulController :RestfulControllerImp, BaseClassExcept
         TODO("Not yet implemented")
     }
 
-    override fun show(): Any {
+    override fun show(): ResponseEntity<RespondDTO> {
         TODO("Not yet implemented")
     }
 
-    override fun index(): Any {
-        TODO("Not yet implemented")
-    }
-
-    override fun beforeSave(): ResponseEntity<RespondDTO> {
-        TODO("Not yet implemented")
-    }
-
-    override fun afterSaved(): Any {
+    override fun index(): ResponseEntity<RespondDTO> {
         TODO("Not yet implemented")
     }
 

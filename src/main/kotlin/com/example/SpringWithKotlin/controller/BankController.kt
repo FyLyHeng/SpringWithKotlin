@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/bank")
-class BankController (private val bankService: BankService) : SimpleGenericRestfulController() {
+class BankController (private val bankService: BankService) : SimpleGenericRestfulController<Bank>() {
 
     /**
      * Old style check isExist in controller

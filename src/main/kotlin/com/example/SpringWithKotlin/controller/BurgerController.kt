@@ -3,6 +3,7 @@ package com.example.SpringWithKotlin.controller
 import ControllerExceptionHandler.RespondDTO.RespondDTO
 import ControllerExceptionHandler.RespondDTO.renderJSONFormat
 import ControllerExceptionHandler.SimpleGenericRestfulController
+import com.example.SpringWithKotlin.model.Burger
 import com.example.SpringWithKotlin.service.BurgerService
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView
 
 @Controller
 @RequestMapping("/burger")
-class BurgerController(private val burgerService: BurgerService) : SimpleGenericRestfulController() {
+class BurgerController(private val burgerService: BurgerService) : SimpleGenericRestfulController<Burger>() {
 
 
     @GetMapping("/home")
@@ -65,7 +66,7 @@ class BurgerController(private val burgerService: BurgerService) : SimpleGeneric
     @PutMapping("/nativeSQL/{id}")
     fun updateBurgerUsingNativeSQL(@PathVariable id: Long,
                                    @RequestParam(required = false) name: String,
-                                   @RequestParam(required = false, defaultValue = "-1") price: Double): ResponseEntity<RespondDTO> {
+                                   @RequestParam(required = false, defaultValue = "${Double.MIN_VALUE}") price: Double): ResponseEntity<RespondDTO> {
         return renderJSONFormat(burgerService.updateBurgerByIdNativeSQL(id, name, price))
     }
 
@@ -80,7 +81,7 @@ class BurgerController(private val burgerService: BurgerService) : SimpleGeneric
         val result = burgerService.updateBurgerByIdNativeSQL(
                 id = id,
                 name = allParams["name"].toString(),
-                price = allParams["price"]?.toDouble() ?: 0.toDouble()
+                price = allParams["price"]?.toDouble() ?: Double.MIN_VALUE
         )
         return renderJSONFormat(result)
     }
