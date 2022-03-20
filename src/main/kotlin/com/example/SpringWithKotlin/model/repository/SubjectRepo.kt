@@ -13,7 +13,6 @@ interface SubjectRepo:JpaRepository<Subject,Long> {
 
     @Modifying(clearAutomatically = true)
     @Query(value = "DELETE FROM student_subject WHERE subject_id = :subjectId AND student_id IN (:studentID)", nativeQuery = true)
-    fun removeStudents(@Param ("subjectId") subjectId:Long,
-                       @Param("studentID") studentID : List<Long>
+    fun removeStudents(@Param ("subjectId") subjectId:Long, @Param("studentID") studentID : List<Long>
     )
 }

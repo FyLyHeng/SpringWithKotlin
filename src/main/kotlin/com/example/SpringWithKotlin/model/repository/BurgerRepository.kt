@@ -4,10 +4,13 @@ import com.example.SpringWithKotlin.model.Burger
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
+import java.util.*
 import javax.transaction.Transactional
 
 @Transactional
 interface BurgerRepository:JpaRepository<Burger,Long> {
+
+    override fun findById(id: Long): Optional<Burger>
 
 
     @Query(value = "select b.id,b.name, b.price from Burger b",nativeQuery = true)

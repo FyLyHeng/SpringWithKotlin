@@ -8,12 +8,12 @@ import javax.persistence.*
 @Entity
 data class Student(
        @Id
-       @GeneratedValue(strategy = GenerationType.AUTO)
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id:Long,
         var name:String,
 
-       @JsonIgnore
-       @ManyToMany(mappedBy = "students",cascade = [CascadeType.ALL],fetch = FetchType.EAGER)
-       @Fetch(value= FetchMode.SELECT)
-        var subjects: MutableSet<Subject> = mutableSetOf()
+//       @JsonIgnore
+//       @ManyToMany(mappedBy = "students",cascade = [CascadeType.ALL],fetch = FetchType.EAGER)
+//       @Fetch(value= FetchMode.SELECT)
+//        var subjects: MutableSet<Subject> = mutableSetOf()
 )

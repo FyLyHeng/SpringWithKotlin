@@ -35,7 +35,7 @@ class SubjectController(val subjectRepo: SubjectRepo, val studentRepo: StudentRe
     fun updateAction(@PathVariable id:Long, @RequestParam studentId:Long):ResponseEntity<RespondDTO>{
 
         val subject = subjectRepo.getById(id)
-        subject.students.add(studentRepo.getById(studentId))
+        //subject.students.add(studentRepo.getById(studentId))
 
         val result = subjectRepo.save(subject)
 
@@ -63,7 +63,7 @@ class SubjectController(val subjectRepo: SubjectRepo, val studentRepo: StudentRe
 
         val students = studentRepo.findAllById(studentId)
 
-        subject.students.removeAll(students)
+        //subject.students.removeAll(students)
 
         val result = subjectRepo.save(subject)
 
